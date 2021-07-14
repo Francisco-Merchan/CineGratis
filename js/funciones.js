@@ -1,4 +1,3 @@
-
 export function filterArrays(peliculas, categoria) {
   const arraycategoria = peliculas.filter(
     (pelicula) => pelicula.category === categoria
@@ -9,12 +8,13 @@ export function filterArrays(peliculas, categoria) {
 
 export function crearSeccion(arrayPeliculas, categoria) {
   const container = document.querySelector(`.${categoria}`);
+  console.log(container);
   arrayPeliculas.forEach((pelicula) => {
     const div = document.createElement("div");
     div.className = "imagen";
     div.innerHTML = `
     <img src="${pelicula.url}" alt="" />
-            <a href="#"><div class="overlay">
+            <a href="../info.html#${pelicula.id}"><div class="overlay">
               <h2>${pelicula.name}</h2>
             </div></a>`;
     container.append(div);
@@ -51,7 +51,7 @@ export const navUsuario = (usuario) => `<div class="container">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav mr-auto">
         <a class="nav-link" href="#">Terror</a>
-        <a class="nav-link" href="#">Romanticas</a>
+        <a class="nav-link" href="#">Comedia</a>
         <a class="nav-link" href="#">Accion</a>
         <a class="nav-link" href="#">Drama</a>
       </div>
@@ -74,7 +74,7 @@ export const navSinUsuario = (usuario) => `<div class="container">
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <div class="navbar-nav mr-auto">
        <a class="nav-link" href="#">Terror</a>
-       <a class="nav-link" href="#">Romanticas</a>
+       <a class="nav-link" href="#">Comedia</a>
        <a class="nav-link" href="#">Accion</a>
        <a class="nav-link" href="#">Drama</a>
      </div>
@@ -115,7 +115,7 @@ export const navAdmin = (usuario) => `<div class="container">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav mr-auto">
         <a class="nav-link" href="#">Terror</a>
-        <a class="nav-link" href="#">Romanticas</a>
+        <a class="nav-link" href="#">Comedia</a>
         <a class="nav-link" href="#">Accion</a>
         <a class="nav-link" href="#">Drama</a>
         <a class="my-1 nav-link btn btn-success text-white" href="../admin.html">PAGINA DE ADMINISTRADOR</a>
@@ -128,3 +128,36 @@ export const navAdmin = (usuario) => `<div class="container">
     </div>
   </div>`;
 
+export const createInfoPage = (
+  pelicula
+) => `<div class="box-image col-12 col-md-6">
+            <figure><img src=${pelicula.url} alt="" /></figure>
+          </div>
+          <div class="box-info col-12 col-md-6">
+            <h3 class="title">${pelicula.name}</h3>
+            <div class="rating">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+              </div>
+            </div>
+            <div class="info">
+              <p>${pelicula.category}</p>
+              <p>1Hr 37Min</p>
+              <p>AÑO</p>
+            </div>
+            <div class="description">
+              <p>
+                ${pelicula.description}
+              </p>
+              <p><strong>Dirigida por: </strong>Nombre Director</p>
+              <p><strong>Escrita por: </strong>Nombre Escritor</p>
+            </div>
+            <div class="button">
+              <a href="#">VER AHORA</a>
+              <a href="#"> AGREGAR A MI LISTA</a>
+            </div>
+          </div>`;
