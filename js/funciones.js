@@ -1,4 +1,24 @@
-export function filterArrays(peliculas, categoria) {
+export function destacadas() {
+  const peliculas = JSON.parse(localStorage.getItem("peliculas"));
+  if (peliculas.some((pelicula) => pelicula.destacada === "true")) {
+    const arrayPeliculas = peliculas.slice(0, 6);
+    crearSeccion(arrayPeliculas, "Destacadas");
+  }
+  if (peliculas.some((pelicula) => pelicula.category === "Drama")) {
+    const arrayPeliculas = filterArrays(peliculas, "Drama");
+    crearSeccion(arrayPeliculas, "Drama");
+  }
+  if (peliculas.some((pelicula) => pelicula.category === "Terror")) {
+    const arrayPeliculas = filterArrays(peliculas, "Terror");
+    crearSeccion(arrayPeliculas, "Terror");
+  }
+  if (peliculas.some((pelicula) => pelicula.category === "Comedia")) {
+    const arrayPeliculas = filterArrays(peliculas, "Comedia");
+    crearSeccion(arrayPeliculas, "Comedia");
+  }
+}
+
+function filterArrays(peliculas, categoria) {
   const arraycategoria = peliculas.filter(
     (pelicula) => pelicula.category === categoria
   );
@@ -6,26 +26,45 @@ export function filterArrays(peliculas, categoria) {
   return arraySeccion;
 }
 
-export function crearSeccion(arrayPeliculas, categoria) {
-  const container = document.querySelector(`.${categoria}`);
-  console.log(container);
+function crearSeccion(arrayPeliculas, categoria) {
+  const container = document.querySelector(`#${categoria}`);
   arrayPeliculas.forEach((pelicula) => {
     const div = document.createElement("div");
     div.className = "imagen";
-    div.innerHTML = `
+    div.innerHTML = `<a href="../info.html#${pelicula.id}">
     <img src="${pelicula.url}" alt="" />
-            <a href="../info.html#${pelicula.id}"><div class="overlay">
+            <div class="overlay">
               <h2>${pelicula.name}</h2>
             </div></a>`;
     container.append(div);
   });
 }
 
-export const navUsuario = (usuario) => `<div class="container">
+export function navbar() {
+  const header = document.querySelector("#header");
+  const user = JSON.parse(localStorage.getItem("usuario"));
+  let isLog = localStorage.getItem("log");
+  if (isLog === "true") {
+    if (user.rol === "user") {
+      header.innerHTML = navUsuario(user);
+      return;
+    } else {
+      header.innerHTML = navAdmin(user);
+      return;
+    }
+  } else {
+    header.innerHTML = navSinUsuario(user);
+    return;
+  }
+}
+
+const navUsuario = (user) =>
+  `<nav class = "navbar navbar-dark bg-dark navbar-expand-md">
+<div class="container">
     <a
       class="navbar-brand d-inline d-md-none font-weight-bold text-white"
     >
-      Bienvenido ${usuario.name}</a
+      Bienvenido ${user.name}</a
     >
     <a class="navbar-brand d-none d-md-inline" href="./index.html">
       <img
@@ -57,13 +96,16 @@ export const navUsuario = (usuario) => `<div class="container">
       </div>
       <div class="d-flex flex-column d-md-block">
       <div class="d-none d-md-inline font-weight-bold text-white"
-      >Bienvenido ${usuario.name}</div>
+      >Bienvenido ${user.name}</div>
       <a href="#" class="btn btn-danger d-block cerrarSesion">Cerrar Sesion</a>
       </div>
     </div>
-  </div>`;
+  </div></nav>`;
 
-export const navSinUsuario = (usuario) => `<div class="container">
+const navSinUsuario = (
+  user
+) => `<nav class = "navbar navbar-dark bg-dark navbar-expand-md">
+<div class="container">
           <a class="navbar-brand" href="./index.html">
             <img src="../assets/logo_small_icon_only.png" width="30" height="30" class="d-inline-block align-top" alt="">
             CineGratis
@@ -83,13 +125,16 @@ export const navSinUsuario = (usuario) => `<div class="container">
        <a href="../register.html" class="btn btn-danger">Registrarse</a>
      </div>
   </div>
-        </div>`;
+        </div></nav>`;
 
-export const navAdmin = (usuario) => `<div class="container">
+const navAdmin = (
+  user
+) => `<nav class = "navbar navbar-dark bg-dark navbar-expand-md">
+<div class="container">
     <a
       class="navbar-brand d-inline d-md-none font-weight-bold text-white"
     >
-      Bienvenido ${usuario.name}</a
+      Bienvenido ${user.name}</a
     >
     <a class="navbar-brand d-none d-md-inline" href="./index.html">
       <img
@@ -122,11 +167,11 @@ export const navAdmin = (usuario) => `<div class="container">
       </div>
       <div class="d-flex flex-column d-md-block">
       <div class="d-none d-md-inline font-weight-bold text-white"
-      >Bienvenido ${usuario.name}</div>
+      >Bienvenido ${user.name}</div>
       <a href="#" class="btn btn-danger d-block cerrarSesion">Cerrar Sesion</a>
       </div>
     </div>
-  </div>`;
+  </div></nav>`;
 
 export const createInfoPage = (
   pelicula
