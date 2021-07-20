@@ -206,3 +206,27 @@ export const createInfoPage = (
               <a href="#"> AGREGAR A MI LISTA</a>
             </div>
           </div>`;
+
+export function adminHTML() {
+  const main = document.querySelector("#mainAdmin");
+  main.innerHTML = ` <section class="adminPage">
+        <div class="panelAdmin bg-white">
+          <div class="adminImage">
+            <img src="./assets/admin.png" alt="" />
+          </div>
+          <div class="panelOptions">
+            <ul>
+              <li class="agregarBtn btn btn-success">AGREGAR PELICULA</li>
+              <li>Terror</li>
+              <li>Drama</li>
+              <li>Accion</li>
+              <li>Comedia</li>
+            </ul>
+          </div>
+        </div>
+        <div class="listMovies bg-white">
+          <h3>Peliculas Disponibles</h3>
+          <div class="list"></div>
+        </div>
+      </section>`;
+}
