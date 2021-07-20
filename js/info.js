@@ -1,4 +1,9 @@
 import { navbar, createInfoPage } from "./funciones.js";
+import {createSeccion} from "./comments.js";
+createSeccion()
+
+
+
 
 function infopelicula() {
   const arrayPeliculas = JSON.parse(localStorage.getItem("peliculas"));

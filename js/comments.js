@@ -1,7 +1,7 @@
 const GET_COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments'
-const commentSection = document.querySelector('.commentSection')
+const commentSection = document.querySelector('#comentarios')
 
-function createSeccion(){
+export function createSeccion(){
   commentSection.innerHTML = `<section>
     <div class="container">
         <div class="row">
@@ -44,10 +44,10 @@ const  getJSON = (url, errorMsg = 'mensaje de error') =>{
 
 const getComments = async () => {
   try {
-    const data = await Promise.all([
-     getJSON(`${GET_COMMENTS_URL}`)
-    ])
-    showComments(data)
+    
+    const data = await getJSON(`${GET_COMMENTS_URL}`)
+    console.log(data)
+    showComments(data.slice(0, 5))
   } catch (error) {
     console.log(error)
   }
@@ -58,28 +58,17 @@ getComments()
 
 const showComments = (data) =>{
     let commentsList = []
+    const commentContainer = document.querySelector('#comentarios');
 /*     console.log(data[0].slice(0,5).map(comment => comment.email)); */
     data.forEach((comment) => {
-        const commentContainer = document.querySelector('#comentarios');
+        console.log(comment)
      /*    commentContainer.classList.add('col-sm-5', 'col-md-6', 'col-12', 'pb-4') */
-        commentContainer.innerHTML= `<div class="comment mt-4 text-justify float-left"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>${comment[1].name}</h4> <span>- 20 October, 2018</span> <br>
-                    <p>${comment[2].body}</p>
-                </div>
-                <div class="text-justify darker mt-4 float-right"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>${comment[2].name}</h4> <span>- 20 October, 2018</span> <br>
-                    <p>${comment[2].body}</p>
-                </div>
-                <div class="comment mt-4 text-justify"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>${comment[3].name}</h4> <span>- 20 October, 2018</span> <br>
-                    <p>${comment[2].body}</p>
-                </div>
-                <div class="darker mt-4 text-justify"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>${comment[4].name}</h4> <span>- 20 October, 2018</span> <br>
-                    <p>${comment[2].body}</p>
+        commentContainer.innerHTML += `<div class="comment mt-4 text-justify float-left"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
+                    <h4>${comment.name}</h4> <span>- 20 October, 2018</span> <br>
+                    <p>${comment.body}</p>
                 </div>`;
         commentsList.push(commentContainer)
     });
-    commentSection.append(commentsList)
-        console.log(commentsList)
+ 
+    commentSection.append(commentContainer)
 }

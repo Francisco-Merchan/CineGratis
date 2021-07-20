@@ -216,7 +216,9 @@ export function adminHTML() {
           </div>
           <div class="panelOptions">
             <ul>
-              <li class="agregarBtn btn btn-success">AGREGAR PELICULA</li>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMovies">
+                AGREGAR PELICULA
+              </button>
               <li>Terror</li>
               <li>Drama</li>
               <li>Accion</li>
@@ -227,6 +229,48 @@ export function adminHTML() {
         <div class="listMovies bg-white">
           <h3>Peliculas Disponibles</h3>
           <div class="list"></div>
+        </div>
+      </section>
+      <section id="modalSection">
+        <div class="modal fade" id="modalMovies" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Peliculas - Cine Gratis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               <form>
+                  <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="categorySelect">Seleccione Categoria</label>
+                    <select class="form-control" id="categorySelect">
+                      <option value="Terror">Terror</option>
+                      <option value="Comedia">Comedia</option>
+                      <option value="Accion">Accion</option>
+                      <option value="Drama">Drama</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="cartelera">Cartelera</label>
+                    <input type="text" class="form-control" id="inputImg" aria-describedby="imgHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="descripcion">Sinopsis</label>
+                    <textarea class="form-control" id="descriptionInput" rows="3"></textarea>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="saveMovies" type="button" class="btn btn-primary">Guardar Cambios</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>`;
 }
