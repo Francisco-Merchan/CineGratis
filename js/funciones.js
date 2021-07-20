@@ -210,7 +210,7 @@ export const createInfoPage = (
 export function adminHTML() {
   const main = document.querySelector("#mainAdmin");
   main.innerHTML = ` <section class="adminPage">
-        <div class="panelAdmin bg-white">
+        <div class="panelAdmin">
           <div class="adminImage">
             <img src="./assets/admin.png" alt="" />
           </div>
@@ -219,14 +219,15 @@ export function adminHTML() {
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMovies">
                 AGREGAR PELICULA
               </button>
-              <li>Terror</li>
-              <li>Drama</li>
-              <li>Accion</li>
-              <li>Comedia</li>
+              <li class="verTodas">Ver Todas</li>
+              <li class="Terror">Terror</li>
+              <li class="Drama">Drama</li>
+              <li class="Accion">Accion</li>
+              <li class="Comedia">Comedia</li>
             </ul>
           </div>
         </div>
-        <div class="listMovies bg-white">
+        <div class="listMovies">
           <h3>Peliculas Disponibles</h3>
           <div class="list"></div>
         </div>
@@ -274,3 +275,18 @@ export function adminHTML() {
         </div>
       </section>`;
 }
+
+export const cardHTML = (movie) => `<div class="movieCardContent">
+                <div class="imageCard">
+                  <img src="${movie.url}" alt="" />
+                </div>
+                <div class="cardContent">
+                  <div>Nombre:<span class="title"> ${movie.name}</span></div>
+                  <div>Categoria:<span class="title"> ${movie.category}</span></div>
+                </div>
+                <div class="buttons">
+                  <div class="editarBtn"><i class="bi bi-pen-fill"></i></div>
+                  <div class="borrarBtn"><i class="bi bi-trash-fill"></i></div>
+                  <div class="destacadasBtn"><i class="bi bi-star"></i></div>
+                </div>
+              </div>`;

@@ -15,6 +15,7 @@
 }
 
 .panelAdmin {
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,8 +24,9 @@
   border-radius: 10px;
 }
 .adminImage {
-  width: 150px;
-  height: 150px;
+  width: 9.375rem;
+  height: 9.375rem;
+  margin-bottom: 50px;
 }
 
 .adminImage img {
@@ -34,26 +36,25 @@
   border-radius: 50%;
 }
 
-.panelOptions {
-  padding-top: 3rem;
-}
-
 .panelOptions ul {
   list-style: none;
   text-align: center;
 }
 
 li {
-  padding: 0.9357rem 0px;
+  padding: 0.8rem 0px;
   font-weight: bold;
   font-size: 1.25rem;
   cursor: pointer;
 }
 
 .listMovies {
+  height: 100%;
+  background-color: white;
   padding: 1rem;
   width: 65%;
   border-radius: 10px;
+  overflow: scroll;
 }
 
 .listMovies h3 {
@@ -101,4 +102,51 @@ li {
 .buttons div {
   font-size: 1.25rem;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .adminPage {
+    display: block;
+    height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+  .panelAdmin {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .panelOptions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .adminImage {
+    display: none;
+  }
+
+  .panelOptions ul {
+    display: flex;
+    list-style: none;
+    text-align: center;
+  }
+  li {
+    padding: 0.9357rem 1rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  .listMovies {
+    background-color: white;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
+  }
 }
