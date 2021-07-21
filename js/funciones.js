@@ -42,6 +42,13 @@ function crearSeccion(arrayPeliculas, categoria) {
 
 export function navbar() {
   const header = document.querySelector("#header");
+  header.addEventListener("click", (e) => {
+    if (e.target.classList.contains("cerrarSesion")) {
+      e.preventDefault();
+      localStorage.setItem("log", "false");
+      window.location.href = "../index.html";
+    }
+  });
   const user = JSON.parse(localStorage.getItem("usuario"));
   let isLog = localStorage.getItem("log");
   if (isLog === "true") {
