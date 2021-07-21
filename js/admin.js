@@ -96,6 +96,11 @@ buttons.addEventListener("click", (e) => {
   if (e.target.classList.contains("bi-pen-fill")) {
   }
   if (e.target.classList.contains("bi-trash-fill")) {
+    const id =
+      e.target.parentElement.parentElement.parentElement.parentElement.id;
+    const movies = JSON.parse(localStorage.getItem("peliculas"));
+    const newMovies = movies.filter((movie) => movie.id != id);
+    localStorage.getItems("peliculas", JSON.stringify(newMovies));
   }
   if (e.target.classList.contains("bi-star")) {
     const id =
