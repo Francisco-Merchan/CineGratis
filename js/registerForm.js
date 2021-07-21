@@ -1,3 +1,5 @@
+import {navbar} from "./funciones.js";
+navbar()
 const registerSeccion = document.querySelector('#registerSeccion') 
 const form = document.querySelector('#form');
 const username = document.querySelector('#username');
