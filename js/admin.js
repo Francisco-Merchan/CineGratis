@@ -7,26 +7,25 @@ const saveBtn = document.querySelector("#saveMovies");
 let totalMovies = JSON.parse(localStorage.getItem("peliculas"));
 
 class Movies {
-  constructor(title, category, img, description) {
-    this.title = title;
+  constructor(name, category, img, description) {
+    this.name = name;
     this.category = category;
-    this.img = img;
+    this.url = img;
     this.description = description;
     this.id = Date.now();
   }
 }
 
 saveBtn.addEventListener("click", (e) => {
-  e.preventDefault();
   const inputName = document.querySelector("#inputName").value;
   const categorySelect = document.querySelector("#categorySelect").value;
   const inputImg = document.querySelector("#inputImg").value;
   const description = document.querySelector("#descriptionInput").value;
   const movie = new Movies(inputName, categorySelect, inputImg, description);
+  let totalMovies = JSON.parse(localStorage.getItem("peliculas"));
   totalMovies.unshift(movie);
   localStorage.setItem("peliculas", JSON.stringify(totalMovies));
-  let totalMovies = JSON.parse(localStorage.getItem("peliculas"));
-  showCards(totalMovies);
+  window.location.href = "./admin.html";
 });
 
 function showCards(movies) {
