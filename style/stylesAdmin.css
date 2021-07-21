@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.adminPage {
+  height: 100vh;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.panelAdmin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.adminImage {
+  width: 150px;
+  height: 150px;
+}
+
+.adminImage img {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.panelOptions {
+  padding-top: 3rem;
+}
+
+.panelOptions ul {
+  list-style: none;
+  text-align: center;
+}
+
+li {
+  padding: 0.9357rem 0px;
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.listMovies {
+  padding: 1rem;
+  width: 65%;
+  border-radius: 10px;
+}
+
+.listMovies h3 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+.movieCard {
+  border: 1px solid black;
+  border-radius: 0.9375rem;
+  padding: 0.625rem 1.875rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+}
+
+.movieCardContent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.imageCard {
+  width: 60px;
+  height: 90px;
+}
+
+.imageCard img {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons div {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
