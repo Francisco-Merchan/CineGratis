@@ -19,7 +19,7 @@ const totalUsers = [
 }
 ]
 
-console.log(totalUsers)
+
 
 
 class Users {
