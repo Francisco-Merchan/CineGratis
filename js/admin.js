@@ -87,3 +87,15 @@ panel.addEventListener("click", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", showCards(totalMovies));
+
+const buttons = document.querySelector(".buttons");
+console.log(buttons);
+buttons.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains("bi-pen-fill")) {
+  }
+  if (e.target.classList.contains("bi-trash-fill")) {
+  }
+  if (e.target.classList.contains("bi-star")) {
+  }
+});

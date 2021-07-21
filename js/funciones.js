@@ -292,8 +292,8 @@ export const cardHTML = (movie) => `<div class="movieCardContent">
                   <div>Categoria:<span class="title"> ${movie.category}</span></div>
                 </div>
                 <div class="buttons">
-                  <div class="editarBtn"><i class="bi bi-pen-fill"></i></div>
-                  <div class="borrarBtn"><i class="bi bi-trash-fill"></i></div>
-                  <div class="destacadasBtn"><i class="bi bi-star"></i></div>
+                  <button class="editarBtn"><i class="bi bi-pen-fill"></i></button>
+                  <button class="borrarBtn"><i class="bi bi-trash-fill"></i></b>
+                  <button class="destacarBtn"><i class="bi bi-star"></i></button>
                 </div>
               </div>`;
