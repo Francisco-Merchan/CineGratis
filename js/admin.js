@@ -2,6 +2,7 @@ import { navbar, adminHTML, cardHTML } from "./funciones.js";
 navbar();
 adminHTML();
 
+let destacadas = [];
 const panel = document.querySelector(".panelOptions");
 const saveBtn = document.querySelector("#saveMovies");
 let totalMovies = JSON.parse(localStorage.getItem("peliculas"));
@@ -33,7 +34,7 @@ function showCards(movies) {
   movies.forEach((movie) => {
     const card = document.createElement("div");
     card.classList.add("movieCard");
-    card.id = "${movie.id}";
+    card.id = "`${movie.id}`";
     card.innerHTML = cardHTML(movie);
     list.append(card);
   });
@@ -97,5 +98,10 @@ buttons.addEventListener("click", (e) => {
   if (e.target.classList.contains("bi-trash-fill")) {
   }
   if (e.target.classList.contains("bi-star")) {
+    const id =
+      e.target.parentElement.parentElement.parentElement.parentElement.id;
+    const movies = JSON.parse(localStorage.getItem("peliculas"));
+    const destacada = movies.find((movie) => movie.id == id);
+    destacadas.unshift(destacada);
   }
 });
