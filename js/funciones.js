@@ -42,6 +42,13 @@ function crearSeccion(arrayPeliculas, categoria) {
 
 export function navbar() {
   const header = document.querySelector("#header");
+  header.addEventListener("click", (e) => {
+    if (e.target.classList.contains("cerrarSesion")) {
+      e.preventDefault();
+      localStorage.setItem("log", "false");
+      window.location.href = "../index.html";
+    }
+  });
   const user = JSON.parse(localStorage.getItem("usuario"));
   let isLog = localStorage.getItem("log");
   if (isLog === "true") {
@@ -89,9 +96,9 @@ const navUsuario = (user) =>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav mr-auto">
+      <a class="nav-link" href="#">Destacadas</a>
         <a class="nav-link" href="#">Terror</a>
         <a class="nav-link" href="#">Comedia</a>
-        <a class="nav-link" href="#">Accion</a>
         <a class="nav-link" href="#">Drama</a>
       </div>
       <div class="d-flex flex-column d-md-block">
@@ -115,9 +122,9 @@ const navSinUsuario = (
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <div class="navbar-nav mr-auto">
+    <a class="nav-link" href="#">Destacadas</a>
        <a class="nav-link" href="#">Terror</a>
        <a class="nav-link" href="#">Comedia</a>
-       <a class="nav-link" href="#">Accion</a>
        <a class="nav-link" href="#">Drama</a>
      </div>
      <div class="d-flex flex-column d-md-block">
@@ -159,9 +166,9 @@ const navAdmin = (
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav mr-auto">
+      <a class="nav-link" href="#">Destacadas</a>
         <a class="nav-link" href="#">Terror</a>
         <a class="nav-link" href="#">Comedia</a>
-        <a class="nav-link" href="#">Accion</a>
         <a class="nav-link" href="#">Drama</a>
         <a class="my-1 nav-link btn btn-success text-white" href="../admin.html">PAGINA DE ADMINISTRADOR</a>
       </div>
@@ -206,3 +213,88 @@ export const createInfoPage = (
               <a href="#"> AGREGAR A MI LISTA</a>
             </div>
           </div>`;
+
+export function adminHTML() {
+  const main = document.querySelector("#mainAdmin");
+  main.innerHTML = ` <section class="adminPage">
+        <div class="panelAdmin">
+          <div class="adminImage">
+            <img src="./assets/admin.png" alt="" />
+          </div>
+          <div class="panelOptions">
+            <ul>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMovies">
+                AGREGAR PELICULA
+              </button>
+              <li class="verTodas">Ver Todas</li>
+              <li class="Terror">Terror</li>
+              <li class="Drama">Drama</li>
+              <li class="Accion">Accion</li>
+              <li class="Comedia">Comedia</li>
+            </ul>
+          </div>
+        </div>
+        <div class="listMovies">
+          <h3>Peliculas Disponibles</h3>
+          <div class="list"></div>
+        </div>
+      </section>
+      <section id="modalSection">
+        <div class="modal fade" id="modalMovies" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Peliculas - Cine Gratis</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               <form>
+                  <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="categorySelect">Seleccione Categoria</label>
+                    <select class="form-control" id="categorySelect">
+                      <option value="Terror">Terror</option>
+                      <option value="Comedia">Comedia</option>
+                      <option value="Accion">Accion</option>
+                      <option value="Drama">Drama</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="cartelera">Cartelera</label>
+                    <input type="text" class="form-control" id="inputImg" aria-describedby="imgHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="descripcion">Sinopsis</label>
+                    <textarea class="form-control" id="descriptionInput" rows="3"></textarea>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="saveMovies" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>`;
+}
+
+export const cardHTML = (movie) => `<div class="movieCardContent">
+                <div class="imageCard">
+                  <img src="${movie.url}" alt="" />
+                </div>
+                <div class="cardContent">
+                  <div>Nombre:<span class="title"> ${movie.name}</span></div>
+                  <div>Categoria:<span class="title"> ${movie.category}</span></div>
+                </div>
+                <div class="buttons">
+                  <div class="editarBtn"><i class="bi bi-pen-fill"></i></div>
+                  <div class="borrarBtn"><i class="bi bi-trash-fill"></i></div>
+                  <div class="destacarBtn"><i class="bi bi-star"></i></div>
+                </div>
+              </div>`;
+

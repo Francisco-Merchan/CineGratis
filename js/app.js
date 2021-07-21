@@ -1,5 +1,4 @@
 import { navbar, destacadas } from "./funciones.js";
-localStorage.setItem("log", "false");
 
 let peliculas = [
   {
