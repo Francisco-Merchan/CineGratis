@@ -3,9 +3,8 @@ import { navbar, createInfoPage } from "./funciones.js";
 function infopelicula() {
   const arrayPeliculas = JSON.parse(localStorage.getItem("peliculas"));
   const id = window.location.hash.slice(1);
-  console.log(id);
   const pelicula = arrayPeliculas.find((pelicula) => pelicula.id == id);
-  console.log(pelicula);
+  document.querySelector(".titleMovie").textContent = `${pelicula.name}`;
   const containerInfo = document.querySelector(".containeer");
   containerInfo.innerHTML = createInfoPage(pelicula);
 }

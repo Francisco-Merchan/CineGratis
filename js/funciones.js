@@ -89,9 +89,9 @@ const navUsuario = (user) =>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav mr-auto">
+      <a class="nav-link" href="#">Destacadas</a>
         <a class="nav-link" href="#">Terror</a>
         <a class="nav-link" href="#">Comedia</a>
-        <a class="nav-link" href="#">Accion</a>
         <a class="nav-link" href="#">Drama</a>
       </div>
       <div class="d-flex flex-column d-md-block">
@@ -115,9 +115,9 @@ const navSinUsuario = (
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <div class="navbar-nav mr-auto">
+    <a class="nav-link" href="#">Destacadas</a>
        <a class="nav-link" href="#">Terror</a>
        <a class="nav-link" href="#">Comedia</a>
-       <a class="nav-link" href="#">Accion</a>
        <a class="nav-link" href="#">Drama</a>
      </div>
      <div class="d-flex flex-column d-md-block">
@@ -159,9 +159,9 @@ const navAdmin = (
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <div class="navbar-nav mr-auto">
+      <a class="nav-link" href="#">Destacadas</a>
         <a class="nav-link" href="#">Terror</a>
         <a class="nav-link" href="#">Comedia</a>
-        <a class="nav-link" href="#">Accion</a>
         <a class="nav-link" href="#">Drama</a>
         <a class="my-1 nav-link btn btn-success text-white" href="../admin.html">PAGINA DE ADMINISTRADOR</a>
       </div>
