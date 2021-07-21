@@ -297,3 +297,4 @@ export const cardHTML = (movie) => `<div class="movieCardContent">
                   <div class="destacarBtn"><i class="bi bi-star"></i></div>
                 </div>
               </div>`;
+

@@ -2,6 +2,7 @@ import { navbar, adminHTML, cardHTML } from "./funciones.js";
 navbar();
 adminHTML();
 
+
 let destacadas = [];
 const panel = document.querySelector(".panelOptions");
 const saveBtn = document.querySelector("#saveMovies");

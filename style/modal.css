@@ -1,0 +1,26 @@
+.modal1 {
+	background-color: #fff;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	width: 380px;
+	max-width: 95%;
+}
+
+
+.modalBody {
+	padding: 15px 20px;
+}
+
+.modalBody h1	 {
+	margin: 0;
+}
+
+
+.modalFooter {
+	background-color: #eee;
+	padding: 15px 0;
+}
