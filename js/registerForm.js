@@ -1,6 +1,5 @@
-import { navbar } from './funciones.js'
+import {navbar} from "./funciones.js";
 navbar()
-console.log(navbar)
 const registerSeccion = document.querySelector('#registerSeccion') 
 const form = document.querySelector('#form');
 const username = document.querySelector('#username');
@@ -149,7 +148,6 @@ function setSuccessFor(input, message) {
 //funcion para eliminar los small de errores/exitos
 function deleteMessage(){
 		const small = document.querySelector('small')
-		submitBtn.disable = 'true'
 		 if (small) {
       small.remove();
     };

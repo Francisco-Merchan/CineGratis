@@ -1,12 +1,14 @@
-const GET_COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments'
-const commentSection = document.querySelector('#comentarios')
 
-export function createSeccion(){
+const GET_COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments'
+const commentSection = document.querySelector('.commentSection')
+const commentContainer = document.querySelector('#commentContainer')
+function createSeccion(section){
+  
   commentSection.innerHTML = `<section>
     <div class="container">
         <div class="row">
-            <div id="comentarios" class="col-sm-5 col-md-6 col-12 pb-4">
-                <h1>Comments</h1>
+            <div id="commentContainer" class="col-sm-5 col-md-6 col-12 pb-4">
+              <div id="comentarios"></div>  
             </div>
             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                 <form id="algin-form">
@@ -24,7 +26,7 @@ export function createSeccion(){
             </div>`
 
 }
-createSeccion()
+createSeccion(commentSection)
 
 eventListener();
 function eventListener() {
@@ -58,17 +60,14 @@ getComments()
 
 const showComments = (data) =>{
     let commentsList = []
-    const commentContainer = document.querySelector('#comentarios');
-/*     console.log(data[0].slice(0,5).map(comment => comment.email)); */
+    const comentarios = document.querySelector('#comentarios');
     data.forEach((comment) => {
-        console.log(comment)
-     /*    commentContainer.classList.add('col-sm-5', 'col-md-6', 'col-12', 'pb-4') */
-        commentContainer.innerHTML += `<div class="comment mt-4 text-justify float-left"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
+        comentarios.innerHTML += `<div class="comment mt-4 text-justify float-left"> <img src="./assets/spiderman.png" alt="" class="rounded-circle" width="40" height="40">
                     <h4>${comment.name}</h4> <span>- 20 October, 2018</span> <br>
                     <p>${comment.body}</p>
                 </div>`;
-        commentsList.push(commentContainer)
+        commentsList.push(comentarios)
     });
  
-    commentSection.append(commentContainer)
+    commentContainer.append(comentarios)
 }
