@@ -34,7 +34,7 @@ function showCards(movies) {
   movies.forEach((movie) => {
     const card = document.createElement("div");
     card.classList.add("movieCard");
-    card.id = "`${movie.id}`";
+    card.id = `${movie.id}`;
     card.innerHTML = cardHTML(movie);
     list.append(card);
   });
@@ -90,7 +90,6 @@ panel.addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", showCards(totalMovies));
 
 const buttons = document.querySelector(".buttons");
-console.log(buttons);
 buttons.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("bi-pen-fill")) {
@@ -105,8 +104,15 @@ buttons.addEventListener("click", (e) => {
   if (e.target.classList.contains("bi-star")) {
     const id =
       e.target.parentElement.parentElement.parentElement.parentElement.id;
-    const movies = JSON.parse(localStorage.getItem("peliculas"));
-    const destacada = movies.find((movie) => movie.id == id);
-    destacadas.unshift(destacada);
+    destacar(id);
   }
 });
+
+function destacar(id) {
+  const movies = JSON.parse(localStorage.getItem("peliculas"));
+  const destacada = movies.find((movie) => movie.id == id);
+  destacadas.unshift(destacada);
+  localStorage.setItem("destacadas", JSON.stringify(destacadas));
+  const star = document.querySelector(".bi-star");
+  star.style.color = "yellow";
+}
